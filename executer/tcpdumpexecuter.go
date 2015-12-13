@@ -33,7 +33,7 @@ func (this *TcpdumpExecuter) RunTcpdump(pcapDirectory, filename, commandOptions 
 }
 
 func (this *TcpdumpExecuter) TerminateTcpdump() error {
-	fmt.Println("press 'q' to stop tcpdump")
+	fmt.Println("enter 'q' to stop tcpdump")
 
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
