@@ -78,7 +78,7 @@ func (this *TcpdumpExecuter) OpenWithWireshark(wiresharkDirectory, filename stri
 		"-r",
 		"pcap/" + filename)
 
-	if err := cmd.Run(); err != nil {
+	if err := cmd.Start(); err != nil {
 		return err
 	}
 
