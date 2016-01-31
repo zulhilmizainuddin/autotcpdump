@@ -3,4 +3,6 @@ language: go
 go:
   - 1.5
   
+go_import_path: autotcpdump
+  
 script: go build
