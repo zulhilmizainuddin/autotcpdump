@@ -41,6 +41,10 @@ func main() {
 		log.Fatal(err)
 	}
 
+	if err := tcpdump.DeletePcapFromDevice(config.PcapLocation, filename); err != nil {
+		log.Print(err)
+	}
+
 	if err := tcpdump.OpenWithWireshark(config.WiresharkLocation, filename); err != nil {
 		log.Fatal(err)
 	}

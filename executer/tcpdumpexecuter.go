@@ -53,7 +53,7 @@ func (this *TcpdumpExecuter) TerminateTcpdump() error {
 }
 
 func (this *TcpdumpExecuter) AdbPullPcapFile(pcapDirectory, filename string) error {
-	fmt.Println("retrieving pcap file")
+	fmt.Println("retrieving " + filename)
 
 	cmd := exec.Command(
 		"bin/adb/adb.exe",
@@ -65,13 +65,32 @@ func (this *TcpdumpExecuter) AdbPullPcapFile(pcapDirectory, filename string) err
 		return err
 	}
 
-	fmt.Println("pcap file retrieved")
+	fmt.Println(filename + " retrieved")
+
+	return nil
+}
+
+func (this *TcpdumpExecuter) DeletePcapFromDevice(pcapDirectory, filename string) error {
+	fmt.Println("deleting " + filename + " from device")
+
+	cmd := exec.Command(
+		"bin/adb/adb.exe",
+		"shell",
+		"rm",
+		"-f",
+		pcapDirectory + filename)
+
+	if err := cmd.Start(); err != nil {
+		return err
+	}
+
+	fmt.Println(filename + " deleted from device")
 
 	return nil
 }
 
 func (this *TcpdumpExecuter) OpenWithWireshark(wiresharkDirectory, filename string) error {
-	fmt.Println("opening pcap file with Wireshark")
+	fmt.Println("opening " + filename + " with Wireshark")
 
 	cmd := exec.Command(
 		wiresharkDirectory + "Wireshark.exe",
@@ -82,7 +101,7 @@ func (this *TcpdumpExecuter) OpenWithWireshark(wiresharkDirectory, filename stri
 		return err
 	}
 
-	fmt.Println("pcap opened successfully with Wireshark")
+	fmt.Println(filename + " opened successfully with Wireshark")
 
 	return nil
 }
