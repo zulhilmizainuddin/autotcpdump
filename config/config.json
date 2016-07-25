@@ -1,5 +1,5 @@
 {
-  "commandOptions": "-s 1600",
+  "commandOptions": "-s 1600 -i any",
   "pcapLocation": "/sdcard/",
   "wiresharkLocation": "C:\\Program Files\\Wireshark\\"
 }
